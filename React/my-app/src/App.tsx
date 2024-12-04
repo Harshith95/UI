@@ -3,32 +3,27 @@ import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'r
 import { Container } from '@mui/material';
 import { lazy, useState } from 'react';
 import NavBar from './components/Nav/NavBar';
-
-// function App() {
-//   return (
-
-//   )
-// }
+import Login from './dashboard/pages/Login/Login';
 
 const Home = lazy(() => import('./dashboard/pages/Home/Home'));
 const About = lazy(() => import('./dashboard/pages/About/About'));
 const Users = lazy(() => import('./dashboard/pages/Users/Users'));
 
-const AppContent = (user: any) => {
+const AppContent = ({ user, handleLogin, handleLogout }: any) => {
   console.log(user);
   const location = useLocation();
 
   return (
     <>
       {
-        location.pathname !== '/login' && <NavBar />
-
+        location.pathname !== '/login' && <NavBar user={user} onlogout={handleLogout} />
       }
       <Container>
         <Routes>
           <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
           <Route path="/about" element={user ? <About /> : < Navigate to="/login" />} />
           <Route path='/users' element={user ? <Users /> : < Navigate to="/login" />} />
+          <Route path='/login' element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
         </Routes>
       </Container>
     </>
@@ -39,9 +34,17 @@ const App = () => {
 
   const [user, setUser] = useState<string | null>(null);
 
+  const handleLogin = (email: string) => {
+    setUser(email);
+  }
+
+  const handleLogout = () => {
+    setUser(null);
+  }
+
   return (
     <Router>
-      <AppContent user={user}></AppContent>
+      <AppContent user={user} handleLogin={handleLogin} handleLogout={handleLogout}></AppContent>
     </Router>
   )
 }

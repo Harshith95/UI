@@ -1,34 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import { Container } from '@mui/material';
+import { lazy, useState } from 'react';
+import NavBar from './components/Nav/NavBar';
 
-function App() {
-  const [count, setCount] = useState(0)
+// function App() {
+//   return (
+
+//   )
+// }
+
+const Home = lazy(() => import('./dashboard/pages/Home/Home'));
+const About = lazy(() => import('./dashboard/pages/About/About'));
+const Users = lazy(() => import('./dashboard/pages/Users/Users'));
+
+const AppContent = (user: any) => {
+  console.log(user);
+  const location = useLocation();
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {
+        location.pathname !== '/login' && <NavBar />
+
+      }
+      <Container>
+        <Routes>
+          <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+          <Route path="/about" element={user ? <About /> : < Navigate to="/login" />} />
+          <Route path='/users' element={user ? <Users /> : < Navigate to="/login" />} />
+        </Routes>
+      </Container>
     </>
+  );
+}
+
+const App = () => {
+
+  const [user, setUser] = useState<string | null>(null);
+
+  return (
+    <Router>
+      <AppContent user={user}></AppContent>
+    </Router>
   )
 }
 

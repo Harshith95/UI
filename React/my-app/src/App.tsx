@@ -8,6 +8,8 @@ import Login from './dashboard/pages/Login/Login';
 const Home = lazy(() => import('./dashboard/pages/Home/Home'));
 const About = lazy(() => import('./dashboard/pages/About/About'));
 const CreateUser = lazy(() => import('./usermgmt/pages/CreateUser'));
+const UserList = lazy(() => import('./usermgmt/pages/UsersList'));
+
 
 const AppContent = ({ user, handleLogin, handleLogout }: any) => {
   console.log(user);
@@ -23,6 +25,7 @@ const AppContent = ({ user, handleLogin, handleLogout }: any) => {
           <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
           <Route path="/about" element={user ? <About /> : < Navigate to="/login" />} />
           <Route path='/users/create' element={user ? <CreateUser /> : < Navigate to="/login" />} />
+          <Route path='/users/list' element={user ? <UserList /> : < Navigate to="/login" />} />
           <Route path='/login' element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
         </Routes>
       </Container>

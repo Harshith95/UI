@@ -32,8 +32,8 @@ const UserForm: React.FC<UserFormProps> = ({ mode, userData, onChange, onSubmit 
                     <TextField label="Email" name="email" value={userData.email} onChange={onChange} fullWidth required margin="normal" />
                     <TextField label="Phone" name="phone" value={userData.phone} onChange={onChange} fullWidth required margin="normal" />
                     <TextField label="Website" name="website" value={userData.website} onChange={onChange} fullWidth required margin="normal" />
-                    <Button type="submit" variant="contained" color="primary" fullWidth>
-                        {mode === 'create' ? 'Create User' : 'Update User'}
+                    <Button type="submit" variant="contained" sx={{ backgroundColor: '#646cff', color: 'white', '&:hover': { backgroundColor: '#4a54e1' }}} fullWidth>
+                        {mode === 'create' ? 'CREATE USER' : 'UPDATE USER'}
                     </Button>
                 </form>
             </Grid>

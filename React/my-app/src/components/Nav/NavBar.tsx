@@ -8,14 +8,14 @@ const NavBar: React.FC<{ user: string | null; onlogout: () => void }> = ({ user,
                 <Typography variant="h6" sx={{ marginBottom: 2 }}>
                     My Application
                 </Typography>
-                <Button component={Link} to="/" color="inherit">
+                <Button component={Link} to="/" color="inherit" sx={{ justifyContent: 'flex-start', width: '100%', textAlign: 'left' }}>
                     Home
                 </Button>
-                <Button component={Link} to="/about" color="inherit">
+                <Button component={Link} to="/about" color="inherit" sx={{ justifyContent: 'flex-start', width: '100%', textAlign: 'left' }}>
                     About
                 </Button>
-                <Button component={Link} to="/users" color="inherit">
-                    Users
+                <Button component={Link} to="/users/create" color="inherit" sx={{ justifyContent: 'flex-start', width: '100%', textAlign: 'left' }}>
+                    Create User
                 </Button>
                 {
                     user && (
@@ -23,7 +23,6 @@ const NavBar: React.FC<{ user: string | null; onlogout: () => void }> = ({ user,
                             Logout
                         </Button>
                     )
-
                 }
             </Toolbar>
         </AppBar>

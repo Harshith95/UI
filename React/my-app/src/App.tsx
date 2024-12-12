@@ -9,11 +9,12 @@ const Home = lazy(() => import('./dashboard/pages/Home/Home'));
 const About = lazy(() => import('./dashboard/pages/About/About'));
 const CreateUser = lazy(() => import('./usermgmt/pages/CreateUser'));
 const UserList = lazy(() => import('./usermgmt/pages/UsersList'));
-
+const UserDetails = lazy(() => import('./usermgmt/pages/UserDetails'));
 
 const AppContent = ({ user, handleLogin, handleLogout }: any) => {
   console.log(user);
   const location = useLocation();
+
 
   return (
     <>
@@ -26,6 +27,7 @@ const AppContent = ({ user, handleLogin, handleLogout }: any) => {
           <Route path="/about" element={user ? <About /> : < Navigate to="/login" />} />
           <Route path='/users/create' element={user ? <CreateUser /> : < Navigate to="/login" />} />
           <Route path='/users/list' element={user ? <UserList /> : < Navigate to="/login" />} />
+          <Route path='/users/:id' element={user ? <UserDetails /> : < Navigate to="/login" />} />
           <Route path='/login' element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
         </Routes>
       </Container>
@@ -36,7 +38,6 @@ const AppContent = ({ user, handleLogin, handleLogout }: any) => {
 const App = () => {
 
   const [user, setUser] = useState<string | null>(null);
-
   const handleLogin = (email: string) => {
     setUser(email);
   }
@@ -52,4 +53,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

@@ -7,8 +7,8 @@ const CreateUsers = () => {
     const [userReq, setUserReq] = useState({
         name: '',
         email: '',
-        phone: '',
-        website: ''
+        age: '',
+        street: ''
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ const CreateUsers = () => {
             const response = await createUser(userReq);
             console.log(response);
             alert('User Created Successfully');
-            setUserReq({ name: '', email: '', phone: '', website: '' });
+            setUserReq({ name: '', email: '', age: '', street: '' });
         } catch (error) {
             console.error(error);
             alert('Error Creating User!! please try again');

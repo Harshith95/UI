@@ -1,3 +1,4 @@
+import { Box, Grid } from "@mui/material";
 import { useFetchUsers } from "../hooks/useFetchUsers";
 import { deleteUser } from "../utils/useUserAPI";
 import UserCard from "./UserCard";
@@ -22,9 +23,15 @@ const UsersList = () => {
     }
 
     return (
-        users.map(us => (
-            <UserCard key={us.id} user={us} onDelete={handleDelete} />
-        ))
+        <Box sx={{ marginLeft: '200px', padding: 3 }}>
+            <Grid container spacing={3}>
+                {
+                    users.map(us => (
+                        <UserCard key={us.id} user={us} onDelete={handleDelete} />
+                    ))
+                }
+            </Grid>
+        </Box>
     );
 }
 export default UsersList;

@@ -7,8 +7,8 @@ interface UserFormProps {
     userData: {
         name: string;
         email: string;
-        phone: string;
-        website: string;
+        age: string;
+        street: string;
     };
 
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -30,8 +30,8 @@ const UserForm: React.FC<UserFormProps> = ({ mode, userData, onChange, onSubmit 
                 <form onSubmit={onSubmit}>
                     <TextField label="Name" name="name" value={userData.name} onChange={onChange} fullWidth required margin="normal" />
                     <TextField label="Email" name="email" value={userData.email} onChange={onChange} fullWidth required margin="normal" />
-                    <TextField label="Phone" name="phone" value={userData.phone} onChange={onChange} fullWidth required margin="normal" />
-                    <TextField label="Website" name="website" value={userData.website} onChange={onChange} fullWidth required margin="normal" />
+                    <TextField label="Age" name="age" value={userData.age} onChange={onChange} fullWidth required margin="normal" />
+                    <TextField label="Street" name="street" value={userData.street} onChange={onChange} fullWidth required margin="normal" />
                     <Button type="submit" variant="contained" sx={{ backgroundColor: '#646cff', color: 'white', '&:hover': { backgroundColor: '#4a54e1' }}} fullWidth>
                         {mode === 'create' ? 'CREATE USER' : 'UPDATE USER'}
                     </Button>

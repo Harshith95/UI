@@ -2,8 +2,9 @@ export interface User {
 	id: number;
 	name: string;
 	email: string;
-	username: string;
-	password: string;
-	role: string;
-	createdAt: string;
+	street: string;
+	city: string;
+	state: string;
+	zip: string;
+	age: string
 }

@@ -37,6 +37,23 @@ This project is a microservices-based e-commerce application built with modern t
 2. Build the services:
    ```bash
    ./mvnw clean package
+   
+   ecommerce-backend/
+   ├── src/
+      ├── main/
+         ├── java/
+               └── com/
+                  └── example/
+                     └── ecommerce/
+                           ├── controller/
+                           ├── service/
+                           ├── model/
+                           ├── repository/
+                           └── EcommerceBackendApplication.java
+         ├── resources/
+               ├── application.properties
+               └── static/
+   └── pom.xml
 
 
 # React + TypeScript + Vite

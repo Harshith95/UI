@@ -4,7 +4,7 @@ import { deleteUser } from "../utils/useUserAPI";
 import UserCard from "./UserCard";
 
 const UsersList = () => {
-    const { users, loading, error, refetch } = useFetchUsers();
+    const { users, refetch } = useFetchUsers();
 
     const handleDelete = async (id: number) => {
         const confirmed = window.confirm('Are you sure you want to delete this user?');
